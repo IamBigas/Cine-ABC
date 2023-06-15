@@ -1,0 +1,59 @@
+package cine_abc;
+
+import java.util.Scanner;
+
+public class Cine_abc {
+
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+        int opcoesadm = 0;
+        String escolha = "";
+        /*senha_adm senhaAdm = new senha_adm();
+        senha_adm loginAdm = new senha_adm();
+        senhaAdm.getsenha();
+        loginAdm.getlogin();*/
+        admSalas salasAdm = new admSalas();
+        horario horarioAdm = new horario();
+        String login = "", senha = "";
+        
+        
+        while (!escolha.equalsIgnoreCase("usuário") && !escolha.equalsIgnoreCase("administrador")) {
+            System.out.print("Login será feito como usuário ou administrador? ");
+            escolha = ler.next();
+            if (!escolha.equalsIgnoreCase("usuário") && !escolha.equalsIgnoreCase("administrador")) {
+                System.out.println("Não consegui entender. Digite usuário ou administrador.\n");
+            }
+        }
+        if (escolha.equalsIgnoreCase("usuário")) {
+            System.out.println(".");
+        }
+        if (escolha.equals("administrador")) {
+            /*while (!login.equals(loginAdm.getlogin()) && !senha.equals(senhaAdm.getsenha())) {
+                System.out.print("Login: ");
+                login = ler.next();
+                System.out.print("Senha: ");
+                senha = ler.next();
+                if (!login.equals(loginAdm.getlogin()) && !senha.equals(senhaAdm.getsenha())) {
+                    System.out.println("Login ou senha incorretos.");
+                }
+            }*/
+            System.out.println(" ");
+            System.out.println("Bem-vindo à área do administrador!");
+            System.out.println("Selecione a opção desejada:\n1 - Modificações de salas\n2 - Modificações de horários\n3 - Modificações dos filmes");
+            opcoesadm = ler.nextInt();
+            switch (opcoesadm) {
+                case 1:
+                    salasAdm.setnumeroSalas(opcoesadm, opcoesadm, opcoesadm, opcoesadm, opcoesadm, senha);
+                    break; 
+                case 2:
+                    horarioAdm.setHorario(opcoesadm, opcoesadm, opcoesadm, senha);
+                    break;
+                case 3:
+                    
+            }
+        }
+    }
+}
+
+
+
