@@ -1,0 +1,48 @@
+package cine_abc;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class filmesAdm {
+
+    Scanner ler = new Scanner(System.in);
+    ArrayList<String> arrayfilmes = new ArrayList<String>();
+    protected int opcao = 0;
+    protected String filmes = "";
+    private String opcao2 = "";
+    private String filmesRd = "";
+
+    public ArrayList setFilmes() {
+        do {
+            System.out.println("1 - Adicionar filmes\n2 - Remover filmes\n0 - Sair");
+            opcao = ler.nextInt();
+            switch (opcao) {
+                case 1:
+                    do {
+                        System.out.println("Digite o nome do filme: ");
+                        filmes = ler.next();
+                        arrayfilmes.add(filmes);
+                        System.out.print("Deseja adicionar mais filmes? [Sim/Não]: ");
+                        opcao2 = ler.next();
+                    } while (opcao2.equals("Sim"));
+                case 2:
+                    do {
+                        System.out.println("Qual desses filmes você deseja remover? ");
+                        System.out.print(arrayfilmes.toString() + ": ");
+                        filmesRd = ler.next();
+                        for (int i = 0; i < arrayfilmes.size(); i++) {
+                            if (arrayfilmes.get(i) == filmesRd) {
+                                arrayfilmes.remove(i);
+                            }
+                        }
+                            System.out.print("Deseja remover mais filmes? [Sim/Não]: ");
+                            opcao2 = ler.next();
+                        }
+                        while (opcao2.equals("Sim"));
+                    }
+
+            }
+            while (opcao != 0);
+            return arrayfilmes;
+        }
+    }
