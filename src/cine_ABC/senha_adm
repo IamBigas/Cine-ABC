@@ -1,0 +1,14 @@
+package cine_abc;
+
+public class senha_adm {
+    protected String senha_Admin = "0000";
+    protected String usuario_Admin = "admin";
+    
+    public String getlogin(){
+        return usuario_Admin;
+    }
+    public String getsenha(){
+        return senha_Admin;
+    }
+    
+}
