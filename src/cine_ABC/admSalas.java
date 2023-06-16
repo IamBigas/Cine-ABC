@@ -1,48 +1,42 @@
-package cine_ABC;
+package cine_abc;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
-public class classe {
+public class admSalas {
 
     Scanner ler = new Scanner(System.in);
-    private int salas = 0;
-    private int aux = 0;
-    private int opcao = 0;
-    private int salasAdd = 0;
-    private int salasRd = 0;
-    private String opcao2 = "";
+    protected int salas = 0;
+    protected int salasRd = 0;
+    ArrayList<String> arraysalas = new ArrayList<String>();
+    protected int aux = 0;
+    protected int opcao = 0;
+    protected String opcao2 = "";
+    protected int i = 0;
 
     public int setnumeroSalas() {
-        System.out.print("-Digitar quantidade de salas\n 2-Adicionar salas\n 3-Remover quantidade de salas\n");
-        opcao = ler.nextInt();
-        switch (opcao) {
-            case 1:
-                System.out.println("Digite a quantidade de salas: ");
-                salas = ler.nextInt();
-                aux = salas;
-                break;
-            case 2:
-                System.out.println("A quantidade atual de salas é " + salas + ". Digite a quantidade a ser adicionada: ");
-                salasAdd = ler.nextInt();
-                salas += salasAdd;
-                break;
-            case 3:
-                while (opcao2.equalsIgnoreCase("Não")) {
-                    while (salas < 0) {
-                        System.out.println("A quantidade atual de salas é " + salas + ". Digite a quantidade a ser diminuida: ");
-                        salasRd = ler.nextInt();
+        do{
+            System.out.println("1 - Adicionar salas\n2 - Remover quantidade de salas\n0 - Sair");
+            opcao = ler.nextInt();
+            switch (opcao) {
+                case 1:
+                    System.out.print("Digite a quantidade de salas: ");
+                    salas = ler.nextInt();
+                    for(int i = 0; i < salas; i++){
+                        arraysalas.add("Sala " + (i+1));
                     }
-                    salas -= salasRd;
-                    if(salas<=0){
-                        System.out.print("A quantidade de salas é igual a " + salas + ". Deseja continuar mesmo assim? [Sim/Não] ");
-                        opcao2 = ler.nextLine();
-                        if(opcao2.equals("Não")){
-                            salas = aux;
-                        }
+                    break;
+                case 2:
+                    System.out.println("Digite a quantidade de salas a ser diminuida");
+                    salasRd = ler.nextInt();
+                    i = arraysalas.size() - salasRd;
+                    while(arraysalas.size() > i){
+                        arraysalas.remove(arraysalas.size() - 1);
                     }
-                }
-        }
-        salas = ler.nextInt();
+                    break;
+
+            }
+        }while(opcao != 0);
         return salas;
     }
 
