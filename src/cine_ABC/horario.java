@@ -1,30 +1,47 @@
-package javaapplication11;
+package cine_abc;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
-public class classe {
+public class horario {
 
     Scanner ler = new Scanner(System.in);
-    private int hora = 0;
-    private int minutos = 0;
-    private int horario = 0;
-    private String opcao = "";
+    ArrayList<String> arrayhorarios = new ArrayList<String>();
+    protected int opcao = 0;
+    protected String horario = "";
+    protected String opcao2 = "";
+    protected String horarioRd = "";
 
-    public int setHorario() {
-        while (opcao.equalsIgnoreCase("Sim")) {
-            System.out.print("Digite a hora do filme: ");
-            hora = ler.nextInt();
-            System.out.print("Digite o(s) minuto(s) do filme: ");
-            minutos = ler.nextInt();
-            if (hora > 24 || hora < 0 || minutos > 60 || minutos < 0 || hora == 24 && minutos > 0) {
-                System.out.print("Esse não é um horário ideal, deseja escrever outro? {Sim/Não]: ");
-                opcao = ler.nextLine();
+    public ArrayList setHorario() {
+        do {
+            System.out.println("1 - Adicionar horarios\n2 - Remover horários\n0 - Sair");
+            opcao = ler.nextInt();
+            switch (opcao) {
+                case 1:
+                    do {
+                        System.out.print("Digite o horário: ");
+                        horario = ler.next();
+                        arrayhorarios.add(horario);
+                        System.out.print("Deseja adicionar mais horários? [Sim/Não]: ");
+                        opcao2 = ler.next();
+                    } while (opcao2.equals("Sim"));
+                case 2:
+                    do {
+                        System.out.println("Qual desses horários você deseja remover? ");
+                        System.out.print(arrayhorarios.toString() + ": ");
+                        horarioRd = ler.next();
+                        for (int i = 0; i < arrayhorarios.size(); i++) {
+                            if (arrayhorarios.get(i) == horarioRd) {
+                                arrayhorarios.remove(i);
+                            }
+                        }
+                        System.out.print("Deseja remover mais horários? [Sim/Não]: ");
+                        opcao2 = ler.next();
+
+                    } while (opcao2.equals("Sim"));
             }
-        }
-        return horario;
+        } while (opcao != 0);
+        return arrayhorarios;
     }
 
-    public int getHorario() {
-        return horario;
-    }
 }
